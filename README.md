@@ -1,3 +1,4 @@
+![project banner](./thetigrbnnr.png "project banner")
 # TIGR
 
 TIGR is a blogging web app built in flask.
