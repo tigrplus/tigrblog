@@ -1,4 +1,7 @@
 ![project banner](./thetigrbnnr.png "project banner")
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 # TIGR
 
 TIGR is a blogging web app built in flask.
@@ -11,3 +14,23 @@ Contributors :
 - Muhammad Yusuf Kahlil Gibran - 001202100167
 - Richie Lie Gunawan - 001202100093
 - Tristan Jonah Pupella - 001202100108
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/Jonah0705"><img src="https://avatars.githubusercontent.com/u/102454788?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jonah0705</b></sub></a><br /><a href="https://github.com/i8g9/tigr/commits?author=Jonah0705" title="Code">💻</a> <a href="https://github.com/i8g9/tigr/commits?author=Jonah0705" title="Documentation">📖</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
