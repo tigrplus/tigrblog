@@ -26,15 +26,26 @@
       ]
     },
     {
+      "login": "i8g9",
+      "name": "Immanuel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/71978642?v=4",
+      "profile": "https://github.com/i8g9",
+      "contributions": [
+        "code",
+        "maintenance",
+        "infra",
+        "design"
+        ]
+     },
+     {
       "login": "Richie8900",
       "name": "Richie8900",
       "avatar_url": "https://avatars.githubusercontent.com/u/102241140?v=4",
       "profile": "https://github.com/Richie8900",
       "contributions": [
         "code",
-        "doc"
-      ]
-    }
+        "doc"]
+     }
   ],
   "contributorsPerLine": 7,
   "projectName": "tigr",
