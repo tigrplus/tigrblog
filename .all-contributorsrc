@@ -24,6 +24,18 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "i8g9",
+      "name": "Immanuel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/71978642?v=4",
+      "profile": "https://github.com/i8g9",
+      "contributions": [
+        "code",
+        "maintenance",
+        "infra",
+        "design"
+      ]
     }
   ],
   "contributorsPerLine": 7,
