@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Jonah0705",
+      "name": "Jonah0705",
+      "avatar_url": "https://avatars.githubusercontent.com/u/102454788?v=4",
+      "profile": "https://github.com/Jonah0705",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "tigr",
+  "projectOwner": "i8g9",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
