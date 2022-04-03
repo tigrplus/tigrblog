@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        {% if articles %}
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <td width="30%">Title</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            {% for (article_id, title, _) in articles %}
+            <tr>
+                <td>
+                    <h4>{{ title }}</h4>
+                </td>
+                <td>
+                    <!-- notice here, in url_for, we have second parameter to accept -->
+                    <a class="btn btn-primary" href="{{ url_for('read', article_id=article_id) }}">Detail</a>
+
+                    <!-- only let logged in user see the edit and delete -->
+                    {% if session and session.get('username') %}
+                        <a class="btn btn-warning" href="{{ url_for('edit', article_id=article_id) }}">Edit</a>
+                        <button type="button" class="btn btn-danger" onclick="deleteArticle({{ article_id }}, {{ '\"%s\"' % title }})">Delete</button>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <h1>No Articles Found</h1>
+        {% endif %}
+
+        <!-- create is only able for logged in users -->
+        {% if session and session.get('username') %}
+        <div>
+            <a class="btn btn-success" href="{{ url_for('create') }}">Create</a>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}
