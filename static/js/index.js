@@ -28,6 +28,36 @@ function createArticle() {
     )
 }
 
+function createUser() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    axios({
+        method: "POST",
+        url: "/article/register",
+        data: {
+            username: username,
+            password: password,
+        },
+        headers: {
+            "Content-Type": "application/json",
+        }
+    }).then(
+        (response) => {
+            var data = response.data;
+            if (data.redirect) {
+                // redirect exists, then set the URL to the redirect
+                window.location.href = data.redirect;
+            }
+
+            if (data.status == 500) {
+                alert(data.error);
+                window.location.href = "/";  // redirect to home page
+            }
+        },
+    )
+}
+
 function deleteArticle(id, title) {
     var message = "Are you sure to delete article with title " + title + " ?";
     var confirm_delete = confirm(message);
