@@ -1,0 +1,58 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Jonah0705",
+      "name": "Jonah0705",
+      "avatar_url": "https://avatars.githubusercontent.com/u/102454788?v=4",
+      "profile": "https://github.com/Jonah0705",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "KahlilGibran17",
+      "name": "KahlilGibran17",
+      "avatar_url": "https://avatars.githubusercontent.com/u/96876025?v=4",
+      "profile": "https://github.com/KahlilGibran17",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "i8g9",
+      "name": "Immanuel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/71978642?v=4",
+      "profile": "https://github.com/i8g9",
+      "contributions": [
+        "code",
+        "maintenance",
+        "infra",
+        "design",
+        "doc"
+      ]
+    },
+    {
+      "login": "Richie8900",
+      "name": "Richie8900",
+      "avatar_url": "https://avatars.githubusercontent.com/u/102241140?v=4",
+      "profile": "https://github.com/Richie8900",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "tigr",
+  "projectOwner": "i8g9",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
