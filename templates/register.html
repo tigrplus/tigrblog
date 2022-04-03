@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+Register account
+{% endblock %}
+
+{% block content %}
+<form action="POST">
+    <label for="username">Username</label>
+    <input id="username" type="text" name="username" placeholder="Input your username">
+    <label for="username">Password</label>
+    <input id="password" type="password" name="password">
+    <input type="submit" value="Register"/>
+</form>
+{% endblock %}
+
