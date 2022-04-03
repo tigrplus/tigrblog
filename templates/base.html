@@ -15,10 +15,10 @@
                 <span>
                     Hello, {{ session['username'] }}
                 </span>
-                <a href="{{ url_for('register') }}">Register</a>
                 <a href="{{ url_for('logout') }}">Log Out</a>
                 {% else %}
                 <a href="{{ url_for('login') }}">Log In</a>
+                <a href="{{ url_for('register') }}">Register</a>
                 {% endif %}
             </form>
         </div>
