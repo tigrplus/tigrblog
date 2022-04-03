@@ -8,9 +8,11 @@ Register account
 <form action="POST">
     <label for="username">Username</label>
     <input id="username" type="text" name="username" placeholder="Input your username">
-    <label for="username">Password</label>
+    <label for="name">Name</label>
+    <input id="name" type="text" name="name" placeholder="Input your name">
+    <label for="password">Password</label>
     <input id="password" type="password" name="password">
-    <input type="submit" value="Register" onclick="createUser()"/>
+    <button type="button" onclick="createUser()" id="createuser">Register</button>
 </form>
 {% endblock %}
 
