@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar navbar-expand">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url_for('index') }}">TIGR</a>
+            <span class="p-4"><a class="navbar-brand text-dark" href="{{ url_for('index') }}">TIGR</a></span>
             <form class="d-flex">
                 {% if session and session.get('username') %}
                 <span>
@@ -17,8 +17,8 @@
                 </span>
                 <span><a href="{{ url_for('logout') }}">Log Out</a></span>
                 {% else %}
-                <span><a href="{{ url_for('login') }}">Log In</a></span>
-                <span><a href="{{ url_for('register') }}">Register</a></span>
+                <span class="p-4"><a class="text-dark" href="{{ url_for('login') }}">Log In</a></span>
+                <span class="p-4"><a class="text-dark" href="{{ url_for('register') }}">Register</a></span>
                 {% endif %}
             </form>
         </div>
