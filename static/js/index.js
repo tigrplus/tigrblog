@@ -32,6 +32,8 @@ function createUser() {
     var username = document.getElementById("username").value;
     var name = document.getElementById("name").value;
     var password = document.getElementById("password").value;
+
+    checkPass();
     
     axios({
         method: "POST",
@@ -48,10 +50,7 @@ function createUser() {
         (response) => {
             var data = response.data;
             if (data.status == 200) {
-                // redirect exists, then set the URL to the redirect
-                // window.location.href = data.redirect;
                 alert("Account has been made");
-                // window.location.href="/";
             }
 
             if (data.status == 500) {
@@ -60,6 +59,28 @@ function createUser() {
             }
         },
     )
+}
+
+function checkPass(){
+    var pass1 = document.getElementById('pass1');
+	var pass2 = document.getElementById('pass2');
+	var message = document.getElementById('errorMsg');
+		
+	if(pass1.value.length < 5){
+	    message.innerHTML = "You have to enter at least 5 digits!";
+	   	return;
+	}
+	
+    if(pass1.value.search(/[A-Z]/)==-1){
+	    message.innerHTML = "Your password needs an uppercase letter!";
+	    return
+	}
+
+	if(pass1.value == pass2.value){	
+	    message.innerHTML = "";
+	}else{
+	    message.innerHTML = "Password doesn't match!";
+	}
 }
 
 function deleteArticle(id, title) {
