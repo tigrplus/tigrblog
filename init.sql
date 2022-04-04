@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS users;
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(100) UNIQUE NOT NULL,
@@ -6,7 +5,6 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL
 );
 
-DROP TABLE IF EXISTS articles;
 CREATE TABLE articles (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,

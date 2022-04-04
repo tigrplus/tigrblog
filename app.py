@@ -41,42 +41,44 @@ def login():
 
     return render_template('login.html')
 
-@app.route('/logout')
-def logout():
-    """ function to do logout """
-    session.clear()  # clear all sessions
-    return redirect(url_for('login'))
-
 @app.route('/register', methods=['GET','POST'])
 def register():
     if request.method == "POST":
         data = request.get_json() or {}
         # check if username and password exist :
-        if data.get('username') and data.get('password'):
+        if data.get('username') and data.get('name') and data.get('password'):
             username = data.get('username', '')
+            name = data.get('name', '')
             password = data.get('password', '')
 
             # strip() is to remove excessive whitespaces before saving
             username = username.strip()
+            name = name.strip()
             password = password.strip()
 
             conn = db_connection()
             cur = conn.cursor()
             # insert with the user_id
             sql = """
-                INSERT INTO users (username, password) VALUES ('%s', '%s')
-            """ % (username, password)
+                INSERT INTO users (username, name,  password) VALUES ('%s', '%s', '%s')
+            """ % (username, name, password)
             cur.execute(sql)
             conn.commit()  # commit to make sure changes are saved
             cur.close()
             conn.close()
             # an example with redirect
-            return jsonify({'status': 200, 'message': 'Success', 'username': username, 'password': password})
+            return jsonify({'status': 200, 'message': 'Success'})
 
         # else will be error
         return jsonify({'status': 500, 'message': 'No Data submitted'})
 
     return render_template('register.html')
+
+@app.route('/logout')
+def logout():
+    """ function to do logout """
+    session.clear()  # clear all sessions
+    return redirect(url_for('login'))
 
 
 @app.route('/')
