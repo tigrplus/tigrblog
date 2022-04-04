@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% if userposts %}
+{{ userposts[2] }}
+{% else %}
+flask app
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if userposts %}
+    {% for (article_id, title, body, user_name) in userposts %}
+        <h4>{{ username }}</h4>
+        <h4>{{ title }}</h4>
+        <a class="btn btn-primary" href="{{ url_for('read', username=user_name, article_id=article_id) }}">Detail</a>
+    {% endfor %}
+{% endif %}
+{% endblock %}

@@ -14,14 +14,15 @@ Home
                     <td>Actions</td>
                 </tr>
             </thead>
-            {% for (article_id, title, _) in articles %}
+            {% for (article_id, title, body,  user_name) in articles %}
             <tr>
                 <td>
+                    <a href="{{ url_for('userpage', username=user_name) }}">{{ user_name }}</a>
                     <h4>{{ title }}</h4>
                 </td>
                 <td>
                     <!-- notice here, in url_for, we have second parameter to accept -->
-                    <a class="btn btn-primary" href="{{ url_for('read', article_id=article_id) }}">Detail</a>
+                    <a class="btn btn-primary" href="{{ url_for('read', username=user_name, article_id=article_id) }}">Detail</a>
 
                     <!-- only let logged in user see the edit and delete -->
                     {% if session and session.get('username') %}
