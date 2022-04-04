@@ -170,36 +170,40 @@ def read(username, article_id):
     return render_template('detail.html', article=article)
 
 
-@app.route('/article/edit/<int:article_id>', methods=['GET', 'POST'])
-def edit(article_id):
+@app.route('/<username>/edit/<int:article_id>', methods=['GET', 'POST'])
+def edit(username, article_id):
     # check if user is logged in
     if not session:
         return redirect(url_for('login'))
+    
+    else :
+        if username == session['username']:
+            if request.method == 'POST':
+                conn = db_connection()
+                cur = conn.cursor()
+                title = request.form['title']
+                body = request.form['body']
+                title = title.strip()
+                body = body.strip()
 
-    if request.method == 'POST':
-        conn = db_connection()
-        cur = conn.cursor()
-        title = request.form['title']
-        body = request.form['body']
-        title = title.strip()
-        body = body.strip()
+                sql_params = (title, body, article_id)
 
-        sql_params = (title, body, article_id)
-
-        sql = "UPDATE articles SET title = '%s', body = '%s' WHERE id = %s" % sql_params
-        print(sql)
-        cur.execute(sql)
-        cur.close()
-        conn.commit()
-        conn.close()
-        # use redirect to go to certain url. url_for function accepts the
-        # function name of the URL which is function index() in this case
-        return redirect(url_for('index'))
+                sql = "UPDATE articles SET title = '%s', body = '%s' WHERE id = %s" % sql_params
+                print(sql)
+                cur.execute(sql)
+                cur.close()
+                conn.commit()
+                conn.close()
+                # use redirect to go to certain url. url_for function accepts the
+                # function name of the URL which is function index() in this case
+                return redirect(url_for('index'))
+        else:
+            return redirect(url_for('index'))
 
     # find the record first                                                             
     conn = db_connection()                                                              
     cur = conn.cursor()                                                                 
-    sql = 'SELECT id, title, body, user_id FROM articles WHERE id = %s' % article_id    
+    sql = 'SELECT id, title, body, user_name FROM articles WHERE id = %s' % article_id    
     cur.execute(sql)                                                                    
     article = cur.fetchone()                                                            
     cur.close()                                                                         

@@ -25,8 +25,8 @@ Home
                     <a class="btn btn-primary" href="{{ url_for('read', username=user_name, article_id=article_id) }}">Detail</a>
 
                     <!-- only let logged in user see the edit and delete -->
-                    {% if session and session.get('username') %}
-                        <a class="btn btn-warning" href="{{ url_for('edit', article_id=article_id) }}">Edit</a>
+                    {% if user_name == session.get('username') %}
+                        <a class="btn btn-warning" href="{{ url_for('edit', username=user_name, article_id=article_id) }}">Edit</a>
                         <button type="button" class="btn btn-danger" onclick="deleteArticle({{ article_id }}, {{ '\"%s\"' % title }})">Delete</button>
                     {% endif %}
                 </td>
