@@ -19,7 +19,7 @@ def login():
         conn = db_connection()
         cur = conn.cursor()
         sql = """
-            SELECT id, username
+            SELECT username
             FROM users
             WHERE username = '%s' AND password = '%s'
         """ % (username, password)
@@ -31,8 +31,7 @@ def login():
             error = 'Wrong credentials. No user found'
         else:
             session.clear()
-            session['user_id'] = user[0]
-            session['username'] = user[1]
+            session['username'] = user[0]
             return redirect(url_for('index'))
 
         flash(error)
@@ -86,8 +85,9 @@ def index():
     conn = db_connection()
     cur = conn.cursor()
     sql = """
-        SELECT art.id, art.title, art.body
+        SELECT art.id, art.title, art.body, art.user_name
         FROM articles art
+        JOIN users usr ON usr.username = art.user_name
         ORDER BY art.title
     """
     cur.execute(sql)
@@ -97,6 +97,24 @@ def index():
     conn.close()
     return render_template('index.html', articles=articles)
 
+@app.route('/<username>', methods=['GET', 'POST'])
+def userpage(username):
+    # check if user is logged in as $username
+    # open db connection
+    conn = db_connection()
+    cur = conn.cursor()
+    # sql to select username from database
+    sql = """
+            SELECT art.id, art.title, art.body, art.user_name 
+            FROM articles art
+            WHERE art.user_name = '%s'
+            ORDER BY art.title
+    """ % username
+    cur.execute(sql)
+    userposts = cur.fetchall()
+    cur.close()
+    conn.close()
+    return render_template('accountpage.html', userposts=userposts)
 
 @app.route('/article/create', methods=['GET', 'POST'])
 def create():
@@ -110,7 +128,7 @@ def create():
         if data.get('title') and data.get('body'):
             title = data.get('title', '')
             body = data.get('body', '')
-            user_id = session.get('user_id')
+            user_name = str(session.get('username'))
 
             # strip() is to remove excessive whitespaces before saving
             title = title.strip()
@@ -120,8 +138,8 @@ def create():
             cur = conn.cursor()
             # insert with the user_id
             sql = """
-                INSERT INTO articles (title, body, user_id) VALUES ('%s', '%s', %d)
-            """ % (title, body, user_id)
+                INSERT INTO articles (title, body, user_name) VALUES ('%s', '%s', '%s')
+            """ % (title, body, user_name)
             cur.execute(sql)
             conn.commit()  # commit to make sure changes are saved
             cur.close()
@@ -135,17 +153,16 @@ def create():
     return render_template('create.html')
 
 
-@app.route('/article/<int:article_id>', methods=['GET'])
-def read(article_id):
+@app.route('/<username>/<int:article_id>', methods=['GET'])
+def read(username, article_id):
     # find the article with id = article_id, return not found page if error
     conn = db_connection()
     cur = conn.cursor()
     sql = """
-        SELECT art.title, art.body, usr.name
+        SELECT art.title, art.body, art.user_name
         FROM articles art
-        JOIN users usr ON usr.id = art.user_id
-        WHERE art.id = %s
-    """ % article_id
+        WHERE art.user_name = '%s' AND art.id = %d
+    """ % (username, article_id)
     cur.execute(sql)
     article = cur.fetchone()
     cur.close()
@@ -153,40 +170,44 @@ def read(article_id):
     return render_template('detail.html', article=article)
 
 
-@app.route('/article/edit/<int:article_id>', methods=['GET', 'POST'])
-def edit(article_id):
+@app.route('/<username>/edit/<int:article_id>', methods=['GET', 'POST'])
+def edit(username, article_id):
     # check if user is logged in
     if not session:
         return redirect(url_for('login'))
+    
+    else :
+        if username == session['username']:
+            if request.method == 'POST':
+                conn = db_connection()
+                cur = conn.cursor()
+                title = request.form['title']
+                body = request.form['body']
+                title = title.strip()
+                body = body.strip()
 
-    if request.method == 'POST':
-        conn = db_connection()
-        cur = conn.cursor()
-        title = request.form['title']
-        body = request.form['body']
-        title = title.strip()
-        body = body.strip()
+                sql_params = (title, body, article_id)
 
-        sql_params = (title, body, article_id)
+                sql = "UPDATE articles SET title = '%s', body = '%s' WHERE id = %s" % sql_params
+                print(sql)
+                cur.execute(sql)
+                cur.close()
+                conn.commit()
+                conn.close()
+                # use redirect to go to certain url. url_for function accepts the
+                # function name of the URL which is function index() in this case
+                return redirect(url_for('index'))
+        else:
+            return redirect(url_for('index'))
 
-        sql = "UPDATE articles SET title = '%s', body = '%s' WHERE id = %s" % sql_params
-        print(sql)
-        cur.execute(sql)
-        cur.close()
-        conn.commit()
-        conn.close()
-        # use redirect to go to certain url. url_for function accepts the
-        # function name of the URL which is function index() in this case
-        return redirect(url_for('index'))
-
-    # find the record first
-    conn = db_connection()
-    cur = conn.cursor()
-    sql = 'SELECT id, title, body FROM articles WHERE id = %s' % article_id
-    cur.execute(sql)
-    article = cur.fetchone()
-    cur.close()
-    conn.close()
+    # find the record first                                                             
+    conn = db_connection()                                                              
+    cur = conn.cursor()                                                                 
+    sql = 'SELECT id, title, body, user_name FROM articles WHERE id = %s' % article_id    
+    cur.execute(sql)                                                                    
+    article = cur.fetchone()                                                            
+    cur.close()                                                                         
+    conn.close()                                                                        
 
     return render_template('edit.html', article=article)
 
