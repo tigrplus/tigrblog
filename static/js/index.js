@@ -31,7 +31,7 @@ function createArticle() {
 function createUser() {
     var username = document.getElementById("username").value;
     var name = document.getElementById("name").value;
-    var password = document.getElementById("password").value;
+    var password = document.getElementById("pass1").value;
 
     checkPass();
     
