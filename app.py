@@ -47,6 +47,37 @@ def logout():
     session.clear()  # clear all sessions
     return redirect(url_for('login'))
 
+@app.route('/register', methods=['GET','POST'])
+def register():
+    if request.method == "POST":
+        data = request.get_json() or {}
+        # check if username and password exist :
+        if data.get('username') and data.get('password'):
+            username = data.get('username', '')
+            password = data.get('password', '')
+
+            # strip() is to remove excessive whitespaces before saving
+            username = username.strip()
+            password = password.strip()
+
+            conn = db_connection()
+            cur = conn.cursor()
+            # insert with the user_id
+            sql = """
+                INSERT INTO users (username, password) VALUES ('%s', '%s')
+            """ % (username, password)
+            cur.execute(sql)
+            conn.commit()  # commit to make sure changes are saved
+            cur.close()
+            conn.close()
+            # an example with redirect
+            return jsonify({'status': 200, 'message': 'Success', 'username': username, 'password': password})
+
+        # else will be error
+        return jsonify({'status': 500, 'message': 'No Data submitted'})
+
+    return render_template('register.html')
+
 
 @app.route('/')
 def index():

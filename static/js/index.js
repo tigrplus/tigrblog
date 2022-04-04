@@ -31,10 +31,12 @@ function createArticle() {
 function createUser() {
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
+    console.log(username)
+    console.log(username)
 
     axios({
         method: "POST",
-        url: "/article/register",
+        url: "/register",
         data: {
             username: username,
             password: password,
@@ -45,9 +47,13 @@ function createUser() {
     }).then(
         (response) => {
             var data = response.data;
-            if (data.redirect) {
-                // redirect exists, then set the URL to the redirect
-                window.location.href = data.redirect;
+
+            console.log(data)
+
+            if (data.status == 200) {
+                console.log(data.message)
+                alert("Account has been made")
+                window.location.href = "/";
             }
 
             if (data.status == 500) {
