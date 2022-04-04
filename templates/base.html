@@ -9,16 +9,16 @@
 <body>
     <nav class="navbar navbar-expand">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url_for('index') }}">PDT Blog</a>
+            <a class="navbar-brand" href="{{ url_for('index') }}">TIGR</a>
             <form class="d-flex">
                 {% if session and session.get('username') %}
                 <span>
-                    Hello, {{ session['username'] }}
+                    {{ session['username'] }}
                 </span>
-                <a href="{{ url_for('logout') }}">Log Out</a>
+                <span><a href="{{ url_for('logout') }}">Log Out</a></span>
                 {% else %}
-                <a href="{{ url_for('login') }}">Log In</a>
-                <a href="{{ url_for('register') }}">Register</a>
+                <span><a href="{{ url_for('login') }}">Log In</a></span>
+                <span><a href="{{ url_for('register') }}">Register</a></span>
                 {% endif %}
             </form>
         </div>
