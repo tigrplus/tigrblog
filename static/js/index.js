@@ -32,6 +32,8 @@ function createUser() {
     var username = document.getElementById("username").value;
     var name = document.getElementById("name").value;
     var password = document.getElementById("password").value;
+
+    checkPass();
     
     axios({
         method: "POST",
