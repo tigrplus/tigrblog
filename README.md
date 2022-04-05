@@ -66,13 +66,11 @@ Go to your web browser of choice and open the following url :
 http://127.0.0.1:5000/
 ```
 
-## Contributors :
+## Contributors ✨
 - Immanuel Azarya Garibaldi - 001202100116
 - Muhammad Yusuf Kahlil Gibran - 001202100167
 - Richie Lie Gunawan - 001202100093
 - Tristan Jonah Pupella - 001202100108
-
-## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
