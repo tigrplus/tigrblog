@@ -17,7 +17,7 @@ your local machine for development and testing purposes.
 ## Dependencies
 
 - [Python3](www.python.org)
-- [PIP] (https://pip.pypa.io/en/stable/installation/)
+- [PIP](https://pip.pypa.io/en/stable/installation/)
 - Flask
 - psycopg2
 
