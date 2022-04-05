@@ -9,6 +9,42 @@ TIGR is a blogging web app built in flask.
 
 This app is created in order to satisfy the 2nd assignment from the Psychology and Design Thinking Course.
 
+## Milestone
+<table>
+    <tr>
+        <th>Target</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+        <td>Add Registration Feature</td>
+        <td>V</td>
+    </tr>
+    <tr>
+        <td>Login Page Have Link to Registration Page</td>
+        <td>V</td>
+    </tr>
+    <tr>
+        <td>Unable to Create Account if Register From Not Filled Completely</td>
+        <td>V</td>
+    </tr>
+    <tr>
+        <td>Password Must Have 5 Characters and One Uppercase</td>
+        <td>V</td>
+    </tr>
+    <tr>
+        <td>Username Must be Unique</td>
+        <td> </td>
+    </tr>
+    <tr>
+        <td>Only User that Create the Article can Edit and Delete Article</td>
+        <td>V</td>
+    </tr>
+    <tr>
+        <td>Every User has Their Own Page with the Articles They Create</td>
+        <td>V</td>
+    </tr>
+</table>
+
 ## Getting Started
 
 These instructions will give you a copy of the project up and running on
