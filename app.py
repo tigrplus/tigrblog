@@ -6,10 +6,8 @@ import string
 
 from db import db_connection
 
-
 app = Flask(__name__)
 app.secret_key = 'THISISMYSECRETKEY'  # create the unique one for yourself
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
