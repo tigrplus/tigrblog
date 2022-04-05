@@ -114,39 +114,95 @@ function deleteArticle(id, title) {
 function darkmode() {
     document.body.style.backgroundColor = 'black';
     document.body.style.color = 'white';
-    var title = document.getElementById('title');
+    var tigr = document.getElementById('tigr');
     var light_mode = document.getElementById('lightmode');
     var dark_mode = document.getElementById('darkmode');
-    var log_in =  document.getElementById('log_in');
+    var log_in =  document.getElementById('login');
     var register =  document.getElementById('register');
-    title.classList.remove('text-dark');
+    var userLoggedIn = document.getElementById("userLoggedIn");
+
+    tigr.classList.remove('text-dark');
     light_mode.classList.remove('text-dark');
     dark_mode.classList.remove('text-dark');
     log_in.classList.remove('text-dark');
     register.classList.remove('text-dark');
-    title.classList.add('text-light');
+    userLoggedIn.classList.remove('text-dark');
+
+    tigr.classList.add('text-light');
     light_mode.classList.add('text-light');
     dark_mode.classList.add('text-light');
     log_in.classList.add('text-light');
     register.classList.add('text-light');
+    userLoggedIn.classList.add('text-light');
+    
 }
 
 function lightmode() {
     document.body.style.backgroundColor = 'white';
     document.body.style.color = 'black';
-    var title = document.getElementById('title');
+    var tigr = document.getElementById('tigr');
     var light_mode = document.getElementById('lightmode');
     var dark_mode = document.getElementById('darkmode');
-    var log_in =  document.getElementById('log_in');
+    var log_in =  document.getElementById('login');
     var register =  document.getElementById('register');
-    title.classList.remove('text-light');
+    var userLoggedIn = document.getElementById("userLoggedIn");
+
+    tigr.classList.remove('text-light');
     light_mode.classList.remove('text-light');
     dark_mode.classList.remove('text-light');
     log_in.classList.remove('text-light');
     register.classList.remove('text-light');
-    title.classList.add('text-dark');
+    userLoggedIn.classList.remove('text-light');
+    
+    tigr.classList.add('text-dark');
     light_mode.classList.add('text-dark');
     dark_mode.classList.add('text-dark');
     log_in.classList.add('text-dark');
     register.classList.add('text-dark');
+    userLoggedIn.classList.add('text-dark');
+}
+
+function logindarkmode() {
+    document.body.style.backgroundColor = 'black';
+    document.body.style.color = 'white';
+    var tigr = document.getElementById('tigr');
+    var light_mode = document.getElementById('lightmode');
+    var dark_mode = document.getElementById('darkmode');
+    var logout = document.getElementById("logout");
+    var userLoggedIn = document.getElementById("userLoggedIn");
+    
+    tigr.classList.remove('text-dark');
+    light_mode.classList.remove('text-dark');
+    dark_mode.classList.remove('text-dark');
+    logout.classList.remove("text-dark");
+    userLoggedIn.classList.remove('text-dark');
+    
+    tigr.classList.add('text-light');
+    light_mode.classList.add('text-light');
+    dark_mode.classList.add('text-light');
+    logout.classList.add('text-light');
+    userLoggedIn.classList.add('text-light');
+
+}
+
+function loginlightmode() {
+    document.body.style.backgroundColor = 'white';
+    document.body.style.color = 'black';
+    var tigr = document.getElementById('tigr');
+    var light_mode = document.getElementById('lightmode');
+    var dark_mode = document.getElementById('darkmode');  
+    var logout = document.getElementById('logout');
+    var userLoggedIn = document.getElementById("userLoggedIn");
+
+    tigr.classList.remove('text-light');
+    light_mode.classList.remove('text-light');
+    dark_mode.classList.remove('text-light');
+    logout.classList.remove("text-light");
+    userLoggedIn.classList.remove('text-light');
+
+    tigr.classList.add('text-dark');
+    light_mode.classList.add('text-dark');
+    dark_mode.classList.add('text-dark');
+    logout.classList.add("text-dark");
+    userLoggedIn.classList.add('text-dark');
 }

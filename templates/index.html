@@ -18,7 +18,7 @@ Home
             {% for (article_id, title, body,  user_name) in articles %}
             <div class="g-col-6 mt-4 p-2 border border-dark">
                 <div class="">
-                    <p><a class="text-dark" href="{{ url_for('userpage', username=user_name) }}">{{ user_name }}</a></p>
+                    <p><a class="text-dark" id="userLoggedIn" href="{{ url_for('userpage', username=user_name) }}">{{ user_name }}</a></p>
                 </div>
                 <h4 class="font-weight-bold">{{ title|upper }}</h4>
 
@@ -36,7 +36,6 @@ Home
         {% else %}
         <h1>No Articles Found</h1>
         {% endif %}
-
         
     </div>
 {% endblock %}
