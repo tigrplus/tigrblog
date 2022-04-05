@@ -110,3 +110,43 @@ function deleteArticle(id, title) {
         );
     }
 }
+
+function darkmode() {
+    document.body.style.backgroundColor = 'black';
+    document.body.style.color = 'white';
+    var title = document.getElementById('title');
+    var light_mode = document.getElementById('lightmode');
+    var dark_mode = document.getElementById('darkmode');
+    var log_in =  document.getElementById('log_in');
+    var register =  document.getElementById('register');
+    title.classList.remove('text-dark');
+    light_mode.classList.remove('text-dark');
+    dark_mode.classList.remove('text-dark');
+    log_in.classList.remove('text-dark');
+    register.classList.remove('text-dark');
+    title.classList.add('text-light');
+    light_mode.classList.add('text-light');
+    dark_mode.classList.add('text-light');
+    log_in.classList.add('text-light');
+    register.classList.add('text-light');
+}
+
+function lightmode() {
+    document.body.style.backgroundColor = 'white';
+    document.body.style.color = 'black';
+    var title = document.getElementById('title');
+    var light_mode = document.getElementById('lightmode');
+    var dark_mode = document.getElementById('darkmode');
+    var log_in =  document.getElementById('log_in');
+    var register =  document.getElementById('register');
+    title.classList.remove('text-light');
+    light_mode.classList.remove('text-light');
+    dark_mode.classList.remove('text-light');
+    log_in.classList.remove('text-light');
+    register.classList.remove('text-light');
+    title.classList.add('text-dark');
+    light_mode.classList.add('text-dark');
+    dark_mode.classList.add('text-dark');
+    log_in.classList.add('text-dark');
+    register.classList.add('text-dark');
+}
