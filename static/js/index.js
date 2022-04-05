@@ -119,6 +119,7 @@ function darkmode() {
     var dark_mode = document.getElementById('darkmode');
     var log_in =  document.getElementById('login');
     var register =  document.getElementById('register');
+    var userLoggedIn = document.getElementById("userLoggedIn");
     
 
     tigr.classList.remove('text-dark');
@@ -126,13 +127,14 @@ function darkmode() {
     dark_mode.classList.remove('text-dark');
     log_in.classList.remove('text-dark');
     register.classList.remove('text-dark');
-    
+    userLoggedIn.classList.remove('text-dark');
 
     tigr.classList.add('text-light');
     light_mode.classList.add('text-light');
     dark_mode.classList.add('text-light');
     log_in.classList.add('text-light');
     register.classList.add('text-light');
+    userLoggedIn.classList.add('text-light');
     
 }
 
@@ -144,13 +146,14 @@ function lightmode() {
     var dark_mode = document.getElementById('darkmode');
     var log_in =  document.getElementById('login');
     var register =  document.getElementById('register');
-    
+    var userLoggedIn = document.getElementById("userLoggedIn");
 
     tigr.classList.remove('text-light');
     light_mode.classList.remove('text-light');
     dark_mode.classList.remove('text-light');
     log_in.classList.remove('text-light');
     register.classList.remove('text-light');
+    userLoggedIn.classList.remove('text-light');
     
 
     tigr.classList.add('text-dark');
@@ -158,6 +161,7 @@ function lightmode() {
     dark_mode.classList.add('text-dark');
     log_in.classList.add('text-dark');
     register.classList.add('text-dark');
+    userLoggedIn.classList.add('text-dark');
     
 }
 
@@ -168,17 +172,21 @@ function logindarkmode() {
     var light_mode = document.getElementById('lightmode');
     var dark_mode = document.getElementById('darkmode');
     var logout = document.getElementById("logout");
+    var userLoggedIn = document.getElementById("userLoggedIn");
+
 
     
     tigr.classList.remove('text-dark');
     light_mode.classList.remove('text-dark');
     dark_mode.classList.remove('text-dark');
     logout.classList.remove("text-dark");
+    userLoggedIn.classList.remove('text-dark');
     
     tigr.classList.add('text-light');
     light_mode.classList.add('text-light');
     dark_mode.classList.add('text-light');
     logout.classList.add('text-light');
+    userLoggedIn.classList.add('text-light');
 
 }
 
@@ -189,16 +197,19 @@ function loginlightmode() {
     var light_mode = document.getElementById('lightmode');
     var dark_mode = document.getElementById('darkmode');  
     var logout = document.getElementById('logout');
+    var userLoggedIn = document.getElementById("userLoggedIn");
 
     tigr.classList.remove('text-light');
     light_mode.classList.remove('text-light');
     dark_mode.classList.remove('text-light');
     logout.classList.remove("text-light");
+    userLoggedIn.classList.remove('text-light');
 
 
     tigr.classList.add('text-dark');
     light_mode.classList.add('text-dark');
     dark_mode.classList.add('text-dark');
     logout.classList.add("text-dark");
+    userLoggedIn.classList.add('text-dark');
 
 }
