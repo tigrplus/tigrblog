@@ -8,19 +8,24 @@
 </head>
 <body>
     <nav class="navbar navbar-expand">
-        <div class="container-fluid">
-            <span class="p-4"><a class="navbar-brand text-dark" href="{{ url_for('index') }}">TIGR</a></span>
-            <span class="p-4"><a class="navbar-brand text-dark" href="#" onclick="lightmode()"id="lightmode" name="lightmode" >Light Mode</a></span>
-            <span class="p-4"><a class="navbar-brand text-dark" href="#" onclick="darkmode()"id="darkmode" name="darkmode">Dark Mode</a></span>
+        <div class="container-fluid" id="navbar">
+            <span class="p-4"><a class="navbar-brand text-dark" href="{{ url_for('index') }}" id="tigr" name="tigr">TIGR</a></span>
+            {% if session and session.get('username') %}
+                <span class="p-4"><a class="navbar-brand text-dark" href="#" onclick="loginlightmode()"id="lightmode" name="lightmode" >Light Mode</a></span>
+                <span class="p-4"><a class="navbar-brand text-dark" href="#" onclick="logindarkmode()"id="darkmode" name="darkmode">Dark Mode</a></span>
+            {% else %}
+                <span class="p-4"><a class="navbar-brand text-dark" href="#" onclick="lightmode()"id="lightmode" name="lightmode" >Light Mode</a></span>
+                <span class="p-4"><a class="navbar-brand text-dark" href="#" onclick="darkmode()"id="darkmode" name="darkmode">Dark Mode</a></span>
+            {% endif %}
             <form class="d-flex">
                 {% if session and session.get('username') %}
                 <span>
-                    <p class="p-4">{{ session['username'] }}</p>
+                    {{ session['username'] }}
                 </span>
-                <span class="p-4"><a href="{{ url_for('logout') }}">Log Out</a></span>
+                <span><a href="{{ url_for('logout') }}" id="logout" name="logout">Log Out</a></span>
                 {% else %}
-                <span class="p-4"><a class="text-dark" href="{{ url_for('login') }}" id="log_in">Log In</a></span>
-                <span class="p-4"><a class="text-dark" href="{{ url_for('register') }}" id="register">Register</a></span>
+                <span class="p-4"><a class="text-dark" href="{{ url_for('login') }}" id="login" name="login">Log In</a></span>
+                <span class="p-4"><a class="text-dark" href="{{ url_for('register') }}" id="register" name="register">Register</a></span>
                 {% endif %}
             </form>
         </div>
