@@ -16,31 +16,31 @@ This app is created in order to satisfy the 2nd assignment from the Psychology a
         <th>Status</th>
     </tr>
     <tr>
-        <td>Add Registration Feature</td>
+        <td>Add registration feature</td>
         <td>V</td>
     </tr>
     <tr>
-        <td>Login Page Have Link to Registration Page</td>
+        <td>Login page have link to registration page</td>
         <td>V</td>
     </tr>
     <tr>
-        <td>Unable to Create Account if Register From Not Filled Completely</td>
+        <td>Unable to create account if register form not filled completely</td>
         <td>V</td>
     </tr>
     <tr>
-        <td>Password Must Have 5 Characters and One Uppercase</td>
+        <td>Password must have 5 characters and one uppercase</td>
         <td>V</td>
     </tr>
     <tr>
-        <td>Username Must be Unique</td>
+        <td>Username must be unique</td>
         <td> </td>
     </tr>
     <tr>
-        <td>Only User that Create the Article can Edit and Delete Article</td>
+        <td>Only user that create the article can edit and delete the article</td>
         <td>V</td>
     </tr>
     <tr>
-        <td>Every User has Their Own Page with the Articles They Create</td>
+        <td>Every user has their own page with the articles they create</td>
         <td>V</td>
     </tr>
 </table>
