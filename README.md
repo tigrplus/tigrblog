@@ -14,14 +14,14 @@ This app is created in order to satisfy the 2nd assignment from the Psychology a
 These instructions will give you a copy of the project up and running on
 your local machine for development and testing purposes. 
 
-### Dependencies
+## Dependencies
 
 - [Python3](www.python.org)
 - [PIP] (https://pip.pypa.io/en/stable/installation/)
 - Flask
 - psycopg2
 
-### Installing
+## Installing
 
 Clone the git repo by running :
 ```
@@ -66,7 +66,7 @@ Go to your web browser of choice and open the following url :
 http://127.0.0.1:5000/
 ```
 
-Contributors :
+## Contributors :
 - Immanuel Azarya Garibaldi - 001202100116
 - Muhammad Yusuf Kahlil Gibran - 001202100167
 - Richie Lie Gunawan - 001202100093
