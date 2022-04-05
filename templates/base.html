@@ -13,9 +13,9 @@
             <form class="d-flex">
                 {% if session and session.get('username') %}
                 <span>
-                    {{ session['username'] }}
+                    <p class="p-4">{{ session['username'] }}</p>
                 </span>
-                <span><a href="{{ url_for('logout') }}">Log Out</a></span>
+                <span class="p-4"><a href="{{ url_for('logout') }}">Log Out</a></span>
                 {% else %}
                 <span class="p-4"><a class="text-dark" href="{{ url_for('login') }}">Log In</a></span>
                 <span class="p-4"><a class="text-dark" href="{{ url_for('register') }}">Register</a></span>

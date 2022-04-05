@@ -161,9 +161,9 @@ def read(username, article_id):
     conn = db_connection()
     cur = conn.cursor()
     sql = """
-        SELECT art.title, art.body, art.user_name
-        FROM articles art
-        WHERE art.user_name = '%s' AND art.id = %d
+        select art.title, art.body, art.user_name
+        from articles art
+        where art.user_name = '%s' and art.id = %d
     """ % (username, article_id)
     cur.execute(sql)
     article = cur.fetchone()
@@ -214,19 +214,22 @@ def edit(username, article_id):
     return render_template('edit.html', article=article)
 
 
-@app.route('/<username>/delete/<int:article_id>', methods=['GET', 'POST'])
-def delete(username, article_id):
+@app.route('/delete/<int:article_id>', methods=['GET', 'POST'])
+def delete(article_id):
     # check if user is logged in
     if not session:
         return redirect(url_for('login'))
 
-    else:
-        if username == session['username']:
-            conn = db_connection()
-            cur = conn.cursor()
-            sql = 'DELETE FROM articles WHERE id = %s' % article_id
-            cur.execute(sql)
-            cur.close()
-            conn.commit()
-            conn.close()
-            return jsonify({'status': 200, 'redirect': '/'})
+    conn = db_connection()
+    cur = conn.cursor()
+    sql = """
+          DELETE 
+          FROM articles art 
+          WHERE art.id = %d
+    """ % article_id
+    cur.execute(sql)
+    cur.close()
+    conn.commit()
+    conn.close()
+    return jsonify({'status': 200, 'redirect': '/'})
+

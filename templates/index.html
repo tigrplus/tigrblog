@@ -28,7 +28,7 @@ Home
                 <!-- only let logged in user see the edit and delete -->
                 {% if user_name == session.get('username') %}
                     <a class="btn btn-warning" href="{{ url_for('edit', username=user_name, article_id=article_id) }}">Edit</a>
-                    <button type="button" class="btn btn-danger" onclick="deleteArticle({{ username }}, {{ article_id }}, {{ '\"%s\"' % title }})">Delete</button>
+                    <button type="button" class="btn btn-danger" onclick="deleteArticle({{ article_id }}, {{ '\"%s\"' % title }})">Delete</button>
                 {% endif %}
             </div>
             {% endfor %}
