@@ -84,6 +84,8 @@ function checkPass(){
 
     if (document.getElementById("errorMsg").innerHTML == "") {
         document.getElementById("createuser").disabled = false;
+    } else {
+        document.getElementById("createuser").disabled = true;
     }
 }
 
