@@ -23,7 +23,7 @@ Home
                 <h4 class="font-weight-bold">{{ title|upper }}</h4>
 
                 <!-- notice here, in url_for, we have second parameter to accept -->
-                <a class="btn btn-dark" href="{{ url_for('read', username=user_name, article_id=article_id) }}">Read Article</a>
+                <a class="btn btn-primary" href="{{ url_for('read', username=user_name, article_id=article_id) }}">Read Article</a>
 
                 <!-- only let logged in user see the edit and delete -->
                 {% if user_name == session.get('username') %}
