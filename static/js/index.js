@@ -81,6 +81,10 @@ function checkPass(){
 	}else{
 	    message.innerHTML = "Password doesn't match!";
 	}
+
+    if (document.getElementById("errorMsg").innerHTML == "") {
+        document.getElementById("createuser").disabled = false;
+    }
 }
 
 function deleteArticle(id, title) {
