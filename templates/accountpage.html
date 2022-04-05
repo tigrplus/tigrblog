@@ -13,7 +13,7 @@ flask app
         <p>{{ user_name }}</p>
     </div>
     {% for (article_id, title, body, user_name) in userposts %}
-        <div class="container"> 
+        <div class="container border border-dark m-2 p-2"> 
             <h3>{{ title }}</h3>
             <a class="btn btn-primary" href="{{ url_for('read', username=user_name, article_id=article_id) }}">Detail</a>
             {% if user_name == session.get('username') %}
