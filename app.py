@@ -214,17 +214,19 @@ def edit(username, article_id):
     return render_template('edit.html', article=article)
 
 
-@app.route('/article/delete/<int:article_id>', methods=['GET', 'POST'])
-def delete(article_id):
+@app.route('/<username>/delete/<int:article_id>', methods=['GET', 'POST'])
+def delete(username, article_id):
     # check if user is logged in
     if not session:
         return redirect(url_for('login'))
 
-    conn = db_connection()
-    cur = conn.cursor()
-    sql = 'DELETE FROM articles WHERE id = %s' % article_id
-    cur.execute(sql)
-    cur.close()
-    conn.commit()
-    conn.close()
-    return jsonify({'status': 200, 'redirect': '/'})
+    else:
+        if username == session['username']:
+            conn = db_connection()
+            cur = conn.cursor()
+            sql = 'DELETE FROM articles WHERE id = %s' % article_id
+            cur.execute(sql)
+            cur.close()
+            conn.commit()
+            conn.close()
+            return jsonify({'status': 200, 'redirect': '/'})
