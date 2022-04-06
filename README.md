@@ -36,8 +36,11 @@ This app is created in order to satisfy the 2nd assignment from the Psychology a
         <td> </td>
     </tr>
     <tr>
-        <td>Only user that create the article can edit and delete the article</td>
+        <td>Only user that create the article can edit the article</td>
         <td>V</td>
+    <tr>
+        <td>Only user that create the article can delete the article</td>
+        <td> </td>
     </tr>
     <tr>
         <td>Every user has their own page with the articles they create</td>
