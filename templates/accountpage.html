@@ -1,11 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-{% if userposts %}
-{{ userposts[2] }}
-{% else %}
-flask app
-{% endif %}
+{{ userposts[3] }}
 {% endblock %}
 
 {% block content %}
@@ -18,7 +14,7 @@ flask app
             <a class="btn btn-primary" href="{{ url_for('read', username=user_name, article_id=article_id) }}">Detail</a>
             {% if user_name == session.get('username') %}
                <a class="btn btn-warning" href="{{ url_for('edit',username=user_name, article_id=article_id) }}">Edit</a>
-               <button type="button" class="btn btn-danger" onclick="deleteArticle({{ article_id }}, {{ '\"%s\"' % title }})">Delete</button>
+               <a class="btn btn-danger" href="{{ url_for('delete', username=user_name, article_id=article_id) }}">Delete</a>
         </div>
         {% endif %}
     {% endfor %}

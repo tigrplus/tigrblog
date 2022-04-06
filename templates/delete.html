@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/{{ article[3] }}/delete/{{ article[0] }}" method="POST">
+    <div class="row mb-3">
+        <p>Are you sure you want to delete article {{ article[1] }} ?"</p>
+    </div>
+    <div class="row">
+        <div class="offset-2 col-6">
+            <button class="btn btn-danger" type="submit" name="btnDelete" id="btnDelete">Delete Article</button>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a href="{{ url_for('index') }}">Back</a>
+</div>
+{% endblock %}

@@ -29,8 +29,4 @@ Log In
         <a href={{ url_for('register') }}>Don't have an account? Make one here</a>
 </form>
 
-{% for message in get_flashed_messages() %}
-<div>{{ message }}</div>
-{% endfor %}
-
 {% endblock %}

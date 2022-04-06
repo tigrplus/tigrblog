@@ -242,22 +242,40 @@ def edit(username, article_id):
     return render_template('edit.html', article=article)
 
 
-@app.route('/delete/<int:article_id>', methods=['GET', 'POST'])
-def delete(article_id):
+@app.route('/<username>/delete/<int:article_id>', methods=['GET', 'POST'])
+def delete(username, article_id):
     # check if user is logged in
     if not session:
         return redirect(url_for('login'))
 
-    conn = db_connection()
-    cur = conn.cursor()
-    sql = """
-          DELETE 
-          FROM articles art 
-          WHERE art.id = %d
-    """ % article_id
-    cur.execute(sql)
-    cur.close()
-    conn.commit()
-    conn.close()
-    return jsonify({'status': 200, 'redirect': '/'})
+    else:
+        if username == session['username']:
+            if request.method == 'POST':
+                conn = db_connection()
+                cur = conn.cursor()                                                                             
 
+                sql = """
+                      DELETE FROM articles art WHERE art.id = %d
+                """ % article_id
+
+                print(sql)
+                cur.execute(sql)
+                cur.close()
+                conn.commit()
+                conn.close()
+                # use redirect to go to certain url. url_for function accepts the
+                # function name of the URL which is function index() in this case
+                return redirect(url_for('index'))
+        else:
+            return redirect(url_for('index'))
+
+    # find the record first                                                             
+    conn = db_connection()                                                              
+    cur = conn.cursor()                                                                 
+    sql = 'SELECT id, title, body, user_name FROM articles art WHERE art.id = %s' % article_id    
+    cur.execute(sql)                                                                    
+    article = cur.fetchone()                                                            
+    cur.close()                                                                         
+    conn.close()                                                                        
+
+    return render_template('delete.html', article=article)
