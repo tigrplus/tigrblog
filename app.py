@@ -58,6 +58,41 @@ def register():
             conn = db_connection()
             cur = conn.cursor()
             # insert with the user_id
+
+            #AAAAAAAAAAAAAAAAAAAAAAAA COPAS DARI SINI AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+            #unique username
+            if request.method == 'POST':
+                username = request.form['username']
+                password = request.form['password']
+
+                conn = db_connection()
+                cur = conn.cursor()
+                sql = """
+                    SELECT username
+                    FROM users
+                    WHERE username = '%s' AND password = '%s'
+                """ % (username, password)
+                cur.execute(sql)
+                user = cur.fetchone()
+
+                error = ''
+                if user is None:
+                    session.clear()
+                    session['username'] = user[0]
+                    return redirect(url_for('index'))
+                else:
+                    error = 'Username already exist'
+
+                flash(error)
+                cur.close()
+                conn.close()
+
+            return render_template('register.html')
+
+
+            #AAAAAAAAAAAAAAAAAAAAAAAA COPAS SAMPE SINI AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
             sql = """
                 INSERT INTO users (username, name,  password) VALUES ('%s', '%s', '%s')
             """ % (username, name, password)
