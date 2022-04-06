@@ -40,7 +40,7 @@ This app is created in order to satisfy the 2nd assignment from the Psychology a
         <td>V</td>
     <tr>
         <td>Only user that create the article can delete the article</td>
-        <td> </td>
+        <td>V</td>
     </tr>
     <tr>
         <td>Every user has their own page with the articles they create</td>
