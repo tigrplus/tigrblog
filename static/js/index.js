@@ -50,12 +50,15 @@ function createUser() {
         (response) => {
             var data = response.data;
             if (data.status == 200) {
-                alert("Account has been made");
+                alert("Account successfully created");
+                window.location.href = "/";  // redirect to home page
+            }
+            if (data.status == 409) {
+                alert("Unfortunately, your username is taken. Please use another username");
             }
 
             if (data.status == 500) {
-                alert(data.error);
-                window.location.href = "/";  // redirect to home page
+                alert("Please fill in the form correctly");
             }
         },
     )

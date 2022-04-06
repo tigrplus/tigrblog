@@ -25,6 +25,8 @@ Log In
             <input type="submit" value="Log In" class="btn btn-success"/>
         </div>
     </div>
+    <div>
+        <a href={{ url_for('register') }}>Don't have an account? Make one here</a>
 </form>
 
 {% for message in get_flashed_messages() %}

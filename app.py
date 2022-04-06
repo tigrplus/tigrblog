@@ -63,26 +63,30 @@ def register():
 
             #unique username
             if request.method == 'POST':
-                username = request.form['username']
-                password = request.form['password']
-
                 conn = db_connection()
                 cur = conn.cursor()
                 sql = """
-                    SELECT username
+                    SELECT *
                     FROM users
-                    WHERE username = '%s' AND password = '%s'
-                """ % (username, password)
+                    WHERE username = '%s' 
+                """ % username
                 cur.execute(sql)
                 user = cur.fetchone()
 
                 error = ''
                 if user is None:
-                    session.clear()
-                    session['username'] = user[0]
-                    return redirect(url_for('index'))
+                    sql = """
+                        INSERT INTO users (username, name,  password) VALUES ('%s', '%s', '%s')
+                    """ % (username, name, password)
+                    cur.execute(sql)
+                    conn.commit()  # commit to make sure changes are saved
+                    cur.close()
+                    conn.close()
+                    # an example with redirect
+                    return jsonify({'status': 200, 'message': 'Success'})
+
                 else:
-                    error = 'Username already exist'
+                    return jsonify({'status': 409, 'message': 'User already exist'})
 
                 flash(error)
                 cur.close()
@@ -93,15 +97,6 @@ def register():
 
             #AAAAAAAAAAAAAAAAAAAAAAAA COPAS SAMPE SINI AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
-            sql = """
-                INSERT INTO users (username, name,  password) VALUES ('%s', '%s', '%s')
-            """ % (username, name, password)
-            cur.execute(sql)
-            conn.commit()  # commit to make sure changes are saved
-            cur.close()
-            conn.close()
-            # an example with redirect
-            return jsonify({'status': 200, 'message': 'Success'})
 
         # else will be error
         return jsonify({'status': 500, 'message': 'No Data submitted'})
